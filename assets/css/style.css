@@ -1,3 +1,50 @@
-#userguess {
-    background-color: red;
+* {
+    font-family: 'Lacquer', sans-serif;
+}
+
+body {
+    background-color: black;
+    margin-top: 50px;
+}
+
+.gamename {
+    color: greenyellow;
+    text-align: center;
+    width: 50%;
+    text-align: center;
+}
+
+#logo {  /* postion motorcycle on our logo */
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: rotate(20deg);
+}
+
+.status {
+    padding-top: 10%;
+}
+
+#marquez {
+    style: "padding-top: 17px";
+}
+
+.resultsbox {
+    background-color: black;
+    color: greenyellow;
+}
+
+.cardheaderstyle {
+    border-bottom: 4px solid greenyellow;
+}
+
+#motopic { /* some of the pictures were a bit too big */
+    width: 80%;
+    height: 80%;
+}
+
+@media screen and (max-width: 992px) {
+.gamename {
+    padding-bottom: 30%;
+}
 }
