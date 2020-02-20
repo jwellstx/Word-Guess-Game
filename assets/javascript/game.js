@@ -8,13 +8,21 @@ var game = {
     newImage: "",      // image of motorcycle to be displayed
     hasWon: false,     // flag for if we won
     numOfWins: 0,      // number of wins
-    numOfLosses: 0,    //number of losses
+    numOfLosses: 0,    // number of losses
+    firstGame: true,   // check if first game
 
     // Main function which check if valid character and then call the other functions
     letsPlay: function() {
         if(!this.hasWon && this.numOfGuesses !=0){  // first check if the game 
             this.moto = "";
             kP = event.key.toLowerCase();  // key pushed
+
+            if (this.firstGame) {
+                document.getElementById("userguess").textContent = Array(this.words[this.currentWordIndex].length).fill("_").join(" ");
+                this.firstGame = false;
+                this.restart();
+                return;
+            }
     
             if(!this.isLetter(kP)){
                 alert("Well.. that's not a letter now is it. Lets try again.");
@@ -86,7 +94,7 @@ var game = {
         this.hasWon = false;
         this.numOfGuesses = 12;
         document.getElementById("currentguesses").textContent = "";
-        document.getElementById("userguess").textContent = "Press any key to start!";
+        document.getElementById("userguess").textContent = Array(this.words[this.currentWordIndex].length).fill("_").join(" ");
     },
 
     // check if we've maxed our guesses and then increment loss and reveal answer via prompt
@@ -111,6 +119,6 @@ var game = {
 };
 
 document.onkeyup = function(event) {
-    console.log(game.words[game.currentWordIndex]);  // Log for TAs to cheat
     game.letsPlay();  // start the game
+    console.log(game.words[game.currentWordIndex]);  // Log for TAs to cheat
 }
